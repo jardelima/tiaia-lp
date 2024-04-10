@@ -58,9 +58,12 @@ export default function Product({ params }) {
     };
 
     const getProduct = async () => {
-        const response = await fetch("http://localhost:3000/products.json", {
-            cache: "no-store"
-        });
+        const response = await fetch(
+            "https://www.usetiaia.com.br/products.json",
+            {
+                cache: "no-store"
+            }
+        );
 
         const res = await response.json();
         const currentProduct = res.products.filter(

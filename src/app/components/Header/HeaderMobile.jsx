@@ -53,19 +53,13 @@ export default function HeaderMobile() {
             >
                 <ul className="pt-4">
                     <li className={`${karla.className} text-primary-400 mb-4`}>
-                        <Link href={"/catalogo"}>
-                            <span className="mr-2">✴</span>Catálogo
-                        </Link>
+                        <Link href={"/catalogo"}>Catálogo</Link>
                     </li>
                     <li className={`${karla.className} text-primary-400 mb-4`}>
-                        <Link href={"/contato"}>
-                            <span className="mr-2">✴</span>Contato
-                        </Link>
+                        <Link href={"/contato"}>Contato</Link>
                     </li>
                     <li className={`${karla.className} text-primary-400 mb-4`}>
-                        <Link href={"/promo"}>
-                            <span className="mr-2">✴</span>Promos
-                        </Link>
+                        <Link href={"/promo"}>Promos</Link>
                     </li>
                 </ul>
             </div>

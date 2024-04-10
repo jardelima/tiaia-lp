@@ -27,12 +27,15 @@ export default function Home() {
     const [products, setProducts] = useState([]);
 
     const getProducts = async () => {
-        const response = await fetch("http://localhost:3000/products.json", {
-            headers: {
-                "Content-Type": "application/json",
-                Accept: "application/json"
+        const response = await fetch(
+            "https://www.usetiaia.com.br/products.json",
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json"
+                }
             }
-        });
+        );
 
         const res = await response.json();
 
