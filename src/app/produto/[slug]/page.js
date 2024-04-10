@@ -164,7 +164,7 @@ export default function Product({ params }) {
                                 href={"#"}
                                 className={`${karla.className} w-full bg-primary-400 text-white-400 px-8 h-[42px] flex items-center justify-center duration-500 uppercase text-sm border border-primary-400 hover:border-primary-400 hover:text-primary-400 hover:bg-transparent`}
                             >
-                                Adicionar ao carrinh
+                                Adicionar ao carrinho
                             </Link>
                         </div>
 
