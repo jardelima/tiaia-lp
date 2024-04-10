@@ -14,7 +14,7 @@ const karla = Karla({
     style: ["italic", "normal"]
 });
 
-export default function Promo() {
+export default function Catalogo() {
     const [products, setProducts] = useState([]);
 
     const getProduct = async () => {
@@ -23,9 +23,8 @@ export default function Promo() {
         });
 
         const res = await response.json();
-        const promoProducts = res.products.filter((product) => product.promo);
 
-        setProducts(promoProducts);
+        setProducts(res.products);
     };
 
     useEffect(() => {
@@ -46,10 +45,10 @@ export default function Promo() {
                             Home
                         </Link>
                         <Link
-                            href={"/promo"}
+                            href={"/catalogo"}
                             className={`${karla.className} text-black-text ml-10 relative before:content-[""] before:w-2 before:h-2 before:bg-primary-400 before:rounded-full before:absolute before:-left-6 before:bottom-[5px]`}
                         >
-                            Promoções
+                            Catálogo
                         </Link>
                     </div>
 
@@ -80,7 +79,7 @@ export default function Promo() {
                                                 {product.name}
                                             </h3>
                                             <p
-                                                className={`${karla.className} italic font-bold text-base xl:text-xl text-black-text`}
+                                                className={`${karla.className} italic font-bold text-base text-black-text xl:text-xl`}
                                             >
                                                 {product.price}
                                             </p>

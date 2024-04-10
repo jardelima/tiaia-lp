@@ -1,18 +1,22 @@
+"use client";
+
 /* eslint-disable no-undef */
 import { Karla, PT_Serif } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
+import Container from "./components/Container/Container";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
-
-import products from "../../products";
+import ProductItem from "./components/Product/Product";
 
 const karla = Karla({
     subsets: ["latin"],
     weight: ["400", "700"],
     style: ["italic", "normal"]
 });
+
 const pt_serif = PT_Serif({
     subsets: ["latin"],
     weight: ["700", "400"],
@@ -20,6 +24,25 @@ const pt_serif = PT_Serif({
 });
 
 export default function Home() {
+    const [products, setProducts] = useState([]);
+
+    const getProducts = async () => {
+        const response = await fetch("http://localhost:3000/products.json", {
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            }
+        });
+
+        const res = await response.json();
+
+        setProducts(res.products);
+    };
+
+    useEffect(() => {
+        getProducts();
+    }, []);
+
     return (
         <>
             <Header />
@@ -29,7 +52,6 @@ export default function Home() {
                     src={"/banners/banner-desktop.png"}
                     alt="Logo Tiaia"
                     fill
-                    objectFit="cover"
                     className="w-full h-full object-cover"
                 />
 
@@ -46,10 +68,10 @@ export default function Home() {
                     </h1>
 
                     <Link
-                        href={"/produtos"}
+                        href={"/catalogo"}
                         className={`${karla.className} uppercase bg-primary-400 px-4 py-2 md:text-sm text-xs xl:text-base xl:hover:bg-transparent border xl:hover:text-primary-400 xl:duration-500 border-primary-400 text-white-400`}
                     >
-                        Ver produtos
+                        Ver catálogo
                     </Link>
                 </div>
             </section>
@@ -62,11 +84,10 @@ export default function Home() {
                             alt="Imagem do estado do Ceará"
                             width={50}
                             height={50}
-                            objectFit="contain"
                             className="mr-2 w-8 xl:w-12 xl:mr-6"
                         />
                         <p
-                            className={`${karla.className} !leading-[10px] text-sm xl:text-lg`}
+                            className={`${karla.className} !leading-[10px] text-black-text text-sm xl:text-lg`}
                         >
                             Feita
                             <br />
@@ -84,11 +105,10 @@ export default function Home() {
                             alt="Imagem Ilustrativa de uma mulher"
                             width={50}
                             height={50}
-                            objectFit="contain"
                             className="mr-2 w-8 xl:w-12 xl:mr-6"
                         />
                         <p
-                            className={`${karla.className} !leading-[10px] text-sm xl:text-lg`}
+                            className={`${karla.className} !leading-[10px] text-black-text text-sm xl:text-lg`}
                         >
                             Idealizada
                             <br />
@@ -106,11 +126,10 @@ export default function Home() {
                             alt="Imagem ilustrativa de artesanato"
                             width={50}
                             height={50}
-                            objectFit="contain"
                             className="mr-2 w-8 xl:w-14 xl:mr-6"
                         />
                         <p
-                            className={`${karla.className} !leading-[10px] text-sm xl:text-lg`}
+                            className={`${karla.className} !leading-[10px] text-black-text text-sm xl:text-lg`}
                         >
                             Produto
                             <br />
@@ -127,11 +146,10 @@ export default function Home() {
                             alt="Imagem ilustrativo de design"
                             width={50}
                             height={50}
-                            objectFit="contain"
                             className="mr-2 w-8 xl:w-14 xl:mr-6"
                         />
                         <p
-                            className={`${karla.className} !leading-[10px] text-sm xl:text-lg`}
+                            className={`${karla.className} !leading-[10px] text-black-text text-sm xl:text-lg`}
                         >
                             Design
                             <br />
@@ -162,7 +180,9 @@ export default function Home() {
                             Somos cearenses. Somos brasileiras
                         </p>
 
-                        <p className={`${karla.className} mb-10`}>
+                        <p
+                            className={`${karla.className} mb-10 text-black-text`}
+                        >
                             Somos uma marca idealizada por mulheres que
                             acreditam em uma moda consciente. Uma moda com{" "}
                             <span className="font-bold italic">propósito</span>.
@@ -170,7 +190,7 @@ export default function Home() {
                             faz.
                         </p>
 
-                        <p className={`${karla.className}`}>
+                        <p className={`${karla.className} text-black-text`}>
                             Criamos produtos únicos e cheio de história para te
                             acompanhar
                         </p>
@@ -186,7 +206,6 @@ export default function Home() {
                             alt="Imagem ilustrativa de comprar pelo celular"
                             width={50}
                             height={50}
-                            objectFit="contain"
                             className="mr-6 w-8 xl:w-14 xl:mr-6"
                         />
 
@@ -212,7 +231,6 @@ export default function Home() {
                             alt="Imagem ilustrativa de envio de pedidos"
                             width={50}
                             height={50}
-                            objectFit="contain"
                             className="mr-6 w-8 xl:w-14 xl:mr-6"
                         />
 
@@ -238,7 +256,6 @@ export default function Home() {
                             alt="Imagem ilustrativa do clube tiaia"
                             width={50}
                             height={50}
-                            objectFit="contain"
                             className="mr-6 w-8 xl:w-14 xl:mr-6"
                         />
 
@@ -260,66 +277,28 @@ export default function Home() {
                 </div>
             </section>
 
-            <section className="bg-header py-10 px-8 sm:py-20 xl:px-0">
-                <div className="w-full max-w-[1300px] mx-auto xl:px-28">
-                    <h2
-                        className={`${karla.className} relative uppercase text-black-text text-lg sm:text-2xl flex items-center justify-center mb-10 sm:mb-20 before:content-[""] before:w-10 before:h-[1px] before:bg-primary-400 before:absolute before:-bottom-2`}
-                    >
-                        Catálogo
-                    </h2>
+            <Container>
+                <h2
+                    className={`${karla.className} relative uppercase text-black-text text-lg sm:text-2xl flex items-center justify-center mb-10 sm:mb-20 before:content-[""] before:w-10 before:h-[1px] before:bg-primary-400 before:absolute before:-bottom-2`}
+                >
+                    Catálogo
+                </h2>
 
-                    <div className="xl:grid xl:grid-cols-3 xl:gap-8 mb-10 flex items-center justify-center flex-col">
-                        {products.map((product) => (
-                            <div
-                                key={product.name}
-                                className="w-full max-w-[400px] mb-10 xl:mb-8 flex items-center justify-center flex-col"
-                            >
-                                <Link href={"/"} className="w-full">
-                                    <Image
-                                        src={product.image}
-                                        alt={product.alt}
-                                        width={360}
-                                        height={360}
-                                        objectFit="cover"
-                                        className="w-full mb-4"
-                                    />
-                                </Link>
-                                <div className="group w-full h-16  overflow-hidden">
-                                    <div className="group-hover:-translate-y-10 group-hover:opacity-0 opacity-100 translate-y-0 duration-500 flex items-center justify-center flex-col">
-                                        <h3
-                                            className={`${karla.className} text-base xl:text-xl mb-1`}
-                                        >
-                                            {product.name}
-                                        </h3>
-                                        <p
-                                            className={`${karla.className} italic font-bold text-base xl:text-xl`}
-                                        >
-                                            {product.price}
-                                        </p>
-                                    </div>
-                                    <div className="group-hover:-translate-y-14 group-hover:opacity-100 group-hover:border-primary-400 group-hover:text-primary-400 w-full h-10 opacity-0 translate-y-4 border border-transparent duration-500 flex items-center justify-center">
-                                        <Link
-                                            href={"/"}
-                                            className={`${karla.className} uppercase text-sm w-full h-full flex items-center justify-center`}
-                                        >
-                                            Eu quero!
-                                        </Link>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-
-                    <div className="flex items-center justify-center">
-                        <Link
-                            href={"/produtos"}
-                            className={`${karla.className} px-8 py-2 hover:-translate-y-3 hover:border-primary-400 hover:text-primary-400 duration-500 uppercase text-sm border border-black-text`}
-                        >
-                            Ver mais produtos
-                        </Link>
-                    </div>
+                <div className="xl:grid xl:grid-cols-3 xl:gap-8 mb-10 flex items-center justify-center flex-col">
+                    {products.map((product) => (
+                        <ProductItem key={product.name} product={product} />
+                    ))}
                 </div>
-            </section>
+
+                <div className="flex items-center justify-center">
+                    <Link
+                        href={"/catalogo"}
+                        className={`${karla.className} px-8 py-2 text-black-text hover:-translate-y-3 hover:border-primary-400 hover:text-primary-400 duration-500 uppercase text-sm border border-black-text`}
+                    >
+                        Ver catálogo completo
+                    </Link>
+                </div>
+            </Container>
 
             <Footer />
         </>

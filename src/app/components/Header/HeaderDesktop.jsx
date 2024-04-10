@@ -23,7 +23,7 @@ export default function HeaderDesktop() {
                     <li
                         className={`${karla.className} mr-10 text-black-text hover:cursor-pointer relative before:content-[''] before:w-0 before:h-[2px] before:bg-primary-400 before:absolute before:-bottom-2 before:left-0 hover:before:w-full before:duration-500 before:rounded-sm`}
                     >
-                        <Link href={"/produtos"}>Produtos</Link>
+                        <Link href={"/catalogo"}>Catálogo</Link>
                     </li>
                     <li
                         className={`${karla.className} mr-10 text-black-text hover:cursor-pointer relative before:content-[''] before:w-0 before:h-[2px] before:bg-primary-400 before:absolute before:-bottom-2 before:left-0 hover:before:w-full before:duration-500 before:rounded-sm`}

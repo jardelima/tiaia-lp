@@ -23,7 +23,7 @@ export default function Contato() {
                             Home
                         </Link>
                         <Link
-                            href={"/produtos"}
+                            href={"/contato"}
                             className={`${karla.className} ml-10 relative before:content-[""] before:w-2 before:h-2 before:bg-primary-400 before:rounded-full before:absolute before:-left-6 before:bottom-[5px]`}
                         >
                             Contato

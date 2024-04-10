@@ -24,7 +24,6 @@ export default function Footer() {
                         alt="Logo Tiaia"
                         width={70}
                         height={30}
-                        objectFit="contain"
                         className="brightness-0 invert mb-10 md:mb-0"
                     />
 
@@ -87,7 +86,6 @@ export default function Footer() {
                                 alt="Logo Instagram"
                                 width={20}
                                 height={20}
-                                objectFit="contain"
                             />
                         </Link>
                         <Link href={"/"}>
@@ -96,7 +94,6 @@ export default function Footer() {
                                 alt="Logo Whatsapp"
                                 width={20}
                                 height={20}
-                                objectFit="contain"
                             />
                         </Link>
                     </div>

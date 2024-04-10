@@ -1,0 +1,56 @@
+{
+    "products": [
+        {
+            "name": "Bag Flecheiras",
+            "slug": "bag-flecheiras",
+            "price": "R$ 47,00",
+            "description": "Bag Flecheiras.",
+            "image": {
+                "path": "/bags/mockup.png",
+                "alt": "Imagem da bag ilustrativa"
+            },
+            "promo": false,
+            "stock": {
+                "colors": [
+                    {
+                        "name": "Vinho",
+                        "color": "#9f1000f2",
+                        "quantity": 3
+                    },
+                    {
+                        "name": "Verde musgo",
+                        "color": "#025e00",
+                        "quantity": 5
+                    }
+                ],
+                "quantity": 8
+            }
+        },
+        {
+            "name": "Bag Cumbuco",
+            "slug": "bag-cumbuco",
+            "price": "R$ 37,00",
+            "description": "Bag Cumbuco.",
+            "image": {
+                "path": "/bags/mockup.png",
+                "alt": "Imagem da bag ilustrativa"
+            },
+            "promo": true,
+            "stock": {
+                "colors": [
+                    {
+                        "name": "Vinho",
+                        "color": "#9f1000f2",
+                        "quantity": 3
+                    },
+                    {
+                        "name": "Verde musgo",
+                        "color": "#025e00",
+                        "quantity": 5
+                    }
+                ],
+                "quantity": 8
+            }
+        }
+    ]
+}

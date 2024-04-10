@@ -19,7 +19,6 @@
         "react-hooks",
         "prettier",
         "eslint-plugin-import-helpers"
-
     ],
     "rules": {
         "react/prop-types": "off",
@@ -32,14 +31,25 @@
             {
                 "newlinesBetween": "always",
                 "groups": [
-                    ["/^react/", "/^next/", "/@next/"],
+                    [
+                        "/^react/",
+                        "/^next/",
+                        "/@next/"
+                    ],
                     "/components/",
                     "/module/",
                     "/^@shared/",
                     "/absolute/",
-                    ["parent", "sibling", "index"]
+                    [
+                        "parent",
+                        "sibling",
+                        "index"
+                    ]
                 ],
-                "alphabetize": { "order": "asc", "ignoreCase": true }
+                "alphabetize": {
+                    "order": "asc",
+                    "ignoreCase": true
+                }
             }
         ]
     }
