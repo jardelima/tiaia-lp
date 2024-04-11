@@ -11,6 +11,8 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import ProductItem from "./components/Product/Product";
 
+import { url } from "../../url-config";
+
 const karla = Karla({
     subsets: ["latin"],
     weight: ["400", "700"],
@@ -27,15 +29,12 @@ export default function Home() {
     const [products, setProducts] = useState([]);
 
     const getProducts = async () => {
-        const response = await fetch(
-            "https://www.usetiaia.com.br/products.json",
-            {
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json"
-                }
+        const response = await fetch(url.urlProd, {
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
             }
-        );
+        });
 
         const res = await response.json();
 

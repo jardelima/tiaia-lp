@@ -12,7 +12,7 @@ const karla = Karla({
 export default function ProductItem({ product }) {
     return (
         <div className="w-full max-w-[400px] mb-10 xl:mb-8 flex items-center justify-center flex-col">
-            <Link href={`/produto/${product.slug}`} className="w-full">
+            <Link href={`/catalogo/${product.slug}`} className="w-full">
                 <Image
                     src={product.image.path}
                     alt={product.image.alt}
@@ -36,7 +36,7 @@ export default function ProductItem({ product }) {
                 </div>
                 <div className="group-hover:-translate-y-14 group-hover:opacity-100 group-hover:border-primary-400 group-hover:text-primary-400 w-full h-10 opacity-0 translate-y-4 border border-transparent duration-500 flex items-center justify-center">
                     <Link
-                        href={`/produto/${product.slug}`}
+                        href={`/catalogo/${product.slug}`}
                         className={`${karla.className} uppercase text-sm w-full h-full flex items-center justify-center`}
                     >
                         Eu quero!

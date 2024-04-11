@@ -1,12 +1,14 @@
 "use client";
 
 import { Karla } from "next/font/google";
-import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
+import ProductItem from "../components/Product/Product";
 import Footer from "@/app/components/Footer/Footer";
 import Header from "@/app/components/Header/Header";
+
+import { url } from "../../../url-config";
 
 const karla = Karla({
     subsets: ["latin"],
@@ -18,12 +20,9 @@ export default function Catalogo() {
     const [products, setProducts] = useState([]);
 
     const getProduct = async () => {
-        const response = await fetch(
-            "https://www.usetiaia.com.br/products.json",
-            {
-                cache: "no-store"
-            }
-        );
+        const response = await fetch(url.urlProd, {
+            cache: "no-store"
+        });
 
         const res = await response.json();
 
@@ -58,45 +57,10 @@ export default function Catalogo() {
                     <div className="xl:grid xl:grid-cols-3 xl:gap-8 mb-10 flex items-center justify-center flex-col">
                         {products.length > 0 &&
                             products.map((product) => (
-                                <div
+                                <ProductItem
                                     key={product.name}
-                                    className="w-full max-w-[400px] mb-10 xl:mb-8 flex items-center justify-center flex-col"
-                                >
-                                    <Link
-                                        href={`/produto/${product.slug}`}
-                                        className="w-full"
-                                    >
-                                        <Image
-                                            src={product.image.path}
-                                            alt={product.image.alt}
-                                            width={360}
-                                            height={360}
-                                            className="w-full mb-4"
-                                        />
-                                    </Link>
-                                    <div className="group w-full h-16  overflow-hidden">
-                                        <div className="group-hover:-translate-y-10 group-hover:opacity-0 opacity-100 translate-y-0 duration-500 flex items-center justify-center flex-col">
-                                            <h3
-                                                className={`${karla.className} text-base xl:text-xl mb-1 text-black-text`}
-                                            >
-                                                {product.name}
-                                            </h3>
-                                            <p
-                                                className={`${karla.className} italic font-bold text-base text-black-text xl:text-xl`}
-                                            >
-                                                {product.price}
-                                            </p>
-                                        </div>
-                                        <div className="group-hover:-translate-y-14 group-hover:opacity-100 group-hover:border-primary-400 group-hover:text-primary-400 w-full h-10 opacity-0 translate-y-4 border border-transparent duration-500 flex items-center justify-center">
-                                            <Link
-                                                href={`/produto/${product.slug}`}
-                                                className={`${karla.className} uppercase text-sm w-full h-full flex items-center justify-center`}
-                                            >
-                                                Eu quero!
-                                            </Link>
-                                        </div>
-                                    </div>
-                                </div>
+                                    product={product}
+                                />
                             ))}
                     </div>
                 </div>

@@ -11,6 +11,8 @@ import Footer from "@/app/components/Footer/Footer";
 import Header from "@/app/components/Header/Header";
 import ProductItem from "@/app/components/Product/Product";
 
+import { url } from "../../../../url-config";
+
 const karla = Karla({
     subsets: ["latin"],
     weight: ["200", "400", "700"],
@@ -58,12 +60,9 @@ export default function Product({ params }) {
     };
 
     const getProduct = async () => {
-        const response = await fetch(
-            "https://www.usetiaia.com.br/products.json",
-            {
-                cache: "no-store"
-            }
-        );
+        const response = await fetch(url.urlProd, {
+            cache: "no-store"
+        });
 
         const res = await response.json();
         const currentProduct = res.products.filter(
@@ -102,7 +101,7 @@ export default function Product({ params }) {
                             : "Catálogo"}
                     </Link>
                     <Link
-                        href={"/produtos"}
+                        href={"#"}
                         className={`${karla.className} ml-10 text-black-text relative before:content-[""] before:w-2 before:h-2 before:bg-primary-400 before:rounded-full before:absolute before:-left-6 before:bottom-[5px]`}
                     >
                         {product.length > 0 && product[0].name}

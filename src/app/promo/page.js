@@ -8,6 +8,8 @@ import React, { useEffect, useState } from "react";
 import Footer from "@/app/components/Footer/Footer";
 import Header from "@/app/components/Header/Header";
 
+import { url } from "../../../url-config";
+
 const karla = Karla({
     subsets: ["latin"],
     weight: ["400", "700"],
@@ -18,12 +20,9 @@ export default function Promo() {
     const [products, setProducts] = useState([]);
 
     const getProduct = async () => {
-        const response = await fetch(
-            "https://www.usetiaia.com.br/products.json",
-            {
-                cache: "no-store"
-            }
-        );
+        const response = await fetch(url.urlProd, {
+            cache: "no-store"
+        });
 
         const res = await response.json();
         const promoProducts = res.products.filter((product) => product.promo);
