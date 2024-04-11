@@ -5,8 +5,8 @@
             "destination": "/"
         },
         {
-            "source": "/catalogo",
-            "destination": "/"
+            "source": "/catalogo/:slug",
+            "destination": "/catalogo/:slug"
         }
     ]
 }
